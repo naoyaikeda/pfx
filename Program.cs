@@ -8,7 +8,8 @@ namespace PowerFXRepl
 {
     class Program
     {
-        const string PROMPT = "n> ";
+        const string PROMPT = "pfx> ";
+        const string VERSION = "v0.0.1";
 
         private static RecalcEngine engine;
 
@@ -167,13 +168,17 @@ Once a formula is defined or a variable's type is defined, it cannot be changed.
             engine.AddFunction(new ExitFunction());
         }
 
+        static void BootUpMessage() {
+            Console.WriteLine("pfxrepl {0}", VERSION);
+
+            Console.WriteLine("\"Help()\" for details");
+        }
+
         static void Main(string[] args)
         {
             ResetEngine();
 
-            Console.WriteLine("pfxrepl v0.0.0");
-
-            Console.WriteLine("\"Help()\" for details");
+            BootUpMessage();
 
             while(true)
             {
